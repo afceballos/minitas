@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<h1>Lista de Procesos de Desminado</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Ubicación</th>
+        <th>Región</th>
+        <th>Tipo de Desminado</th>
+        <th>Usuario</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="procesoDesminado : ${procesosDesminado}">
+        <td th:text="${procesoDesminado.id}"></td>
+        <td th:text="${procesoDesminado.ubicacion}"></td>
+        <td th:text="${procesoDesminado.region}"></td>
+        <td th:text="${procesoDesminado.tipoDesminado}"></td>
+        <td th:text="${procesoDesminado.usuario.username}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
